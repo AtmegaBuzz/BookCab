@@ -2,17 +2,20 @@ from globals import db
 from sqlalchemy.sql import func
 
 class CabGroup(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(120),nullable=False)
     
 
 # root destination of the organization offering the services
 class Source(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
     location_name = db.Column(db.String(1000),nullable=False)
 
 
 
 class Booking(db.Model):
     
+    id = db.Column(db.Integer,primary_key=True)
     destination = db.Column(db.String(50),nullable=True)
     status = db.Column(db.Integer,nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())

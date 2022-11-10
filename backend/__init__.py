@@ -2,14 +2,26 @@
 import os
 from flask import Flask
 from flask_login import LoginManager
-from globals import UPLOAD_FOLDER,DB_NAME,SECRET_KEY,db,ma
+from globals import (
+    UPLOAD_FOLDER,
+    DB_NAME,
+    SECRET_KEY,
+    db,
+    ma,
+    STATIC_URI,
+    TEMPLATES_URI
+)
 
 def create_app():
 
     app = Flask(__name__)
+
     app.config["SECRET_KEY"] = SECRET_KEY
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+    app.static_folder = STATIC_URI
+    app.template_folder = TEMPLATES_URI
+
     db.init_app(app)
 
     from backend.auth import auth 
@@ -21,8 +33,9 @@ def create_app():
 
     from backend.models import (
         User,
-        Book,
-        Chapter
+        Booking,
+        CabGroup,
+        Source
     )
 
     create_database(app)
