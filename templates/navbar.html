@@ -1,0 +1,36 @@
+<!--==============================header=================================-->
+<header>
+    <!-- main menu grid_12 for space-->
+        <div class="menu_block ">
+            <div class="container_12">
+                <div class="grid_12">
+                    <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+                        <ul class="sf-menu">
+                            {%if user.is_authenticated%}
+                                <li ><a href="{{ url_for('auth.register') }}">Home</a></li>
+                                <li ><a href="{{ url_for('auth.register') }}">Services</a></li>
+                                <li><a href="{{ url_for('auth.register') }}">Contact Us</a></li>
+                                <li ><a href="{{ url_for('auth.register') }}">logout</a></li>
+                            {%else%}
+                                <li ><a href="{{ url_for('auth.register') }}">Login</a></li>
+                                <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                            {%endif%}
+                        </ul>
+                    </nav>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="container_12">
+            <div class="grid_12">
+                <h1>
+                    <!--==============================home route=================================-->
+                    <a href="{{ url_for('auth.register') }}"> 
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" , alt = "new logo"/>
+                    </a>
+                </h1>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </header>
