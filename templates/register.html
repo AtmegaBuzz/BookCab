@@ -56,32 +56,37 @@
 					<div class="grid_5">
 						<h3>Register</h3>
 						<form id="bookingForm" method = "POST">
+							{{ form.hidden_tag() }}
 								<div class="tmInput">
-									<input name="name" placeHolder="Name:" type="text" data-constraints='@NotEmpty @Required @AlphaSpecial'>
+									<!-- <input name="name" placeHolder="Name:" type="text" data-constraints='@NotEmpty @Required @AlphaSpecial'> -->
+									{{form.name.label}}
+									{{form.name(size=20)}}
 								</div>
 								<div class="tmInput">
-									<input name="phone" placeHolder="Phone No." type="number" data-constraints="@NotEmpty @Required ">
+									<!-- <input name="phone" placeHolder="Phone No." type="number" data-constraints="@NotEmpty @Required "> -->
+									{{form.phone_number.label}}
+									{{form.phone_number(size=12)}}
 								</div>
 								<div class="tmInput">
-									<input name="email" placeHolder="Email:" type="email" data-constraints="@NotEmpty @Required @Email">
+									<!-- <input name="email" placeHolder="Email:" type="email" data-constraints="@NotEmpty @Required @Email"> -->
+									{{form.email.label}}
+									{{form.email()}}
 								</div>
-							<strong>Date of Birth</strong>
-							<label class="tmDatepicker">
-								<input type="date" name="dob"	placeHolder='20/05/2014' data-constraints="@NotEmpty @Required @Date">
-							</label>
 							<div class="clear"></div>
 								<div class="tmInput mr0">
-									<input name="password" placeHolder="Password:" type="password" data-constraints="@NotEmpty @Required">
+									<!-- <input name="password" placeHolder="Password:" type="password" data-constraints="@NotEmpty @Required"> -->
+									{{form.password.label}}
+									{{form.password(size=16)}}
 								</div>
 							<div class="clear"></div>
 							<!-- <a href="#" class="btn" data-type="submit">Submit</a> -->
-                            <input type="submit" class="btn">
+                            <!-- <input type="submit" class="btn"> -->
+							{{form.submit(class="btn")}}
 							<div>
-								{%if messages%}
-									{%for message in messages%}
-										<p style="color: red;">{{message}}</p>
-									{%endfor%}
-								{%endif%}
+								{% for message in get_flashed_messages() %}
+									<p style="color: red;">{{message}}</p>
+								{% endfor %}
+								
 							</div> 
 						</form>
 					</div>

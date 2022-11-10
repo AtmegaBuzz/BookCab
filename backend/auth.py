@@ -1,5 +1,12 @@
-from flask import Blueprint, render_template, session, request, redirect
-
+from flask import (
+    Blueprint,
+    render_template,
+    session,
+    request,
+    redirect,
+    flash
+)
+from backend.forms import RegisterForm
 
 auth = Blueprint("auth",__name__)
 
@@ -7,18 +14,23 @@ auth = Blueprint("auth",__name__)
 def register():
 
     user = session.get("user",None)
+    form = RegisterForm()
+
     if user!=None:
         return redirect("/home")
 
     if request.method == "POST":
-        
-        print(request.form)
 
+        if form.validate_on_submit():
+            print(form.data)
+        else:
+            print(form.errors)        
 
         
     return render_template(
         'register.html',
-        user = user
+        user = user,
+        form=form
     )
 
 @auth.route('/login',methods=['POST','GET'])
