@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+STATIC_URI = os.path.join(os.getcwd(),"static")
+TEMPLATES_URI = os.path.join(os.getcwd(),"templates")
 DB_NAME = "database.db"
 UPLOAD_FOLDER = "static/images"
 SECRET_KEY = os.getenv("SECRET_KEY",None)

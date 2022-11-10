@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{%load static%}
+		<title>Login</title>
+
+		 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script type="text/javascript">
+          $(function() {
+    $('#btnSignUp').click(function() {
+
+        $.ajax({
+            url: '/booking/booking.php',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+      </script>
+		<meta charset="utf-8">
+		<meta name = "format-detection" content = "telephone=no" />
+
+		<link  rel="stylesheet" href="{% static 'booking/css/booking.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/camera.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/style.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/reset.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/grid.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/superfish.css' %}" >
+		<link  rel="stylesheet" href="{% static 'css/font-awesome.css' %}" >
+
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico" />
+
+		
+
+		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery-migrate-1.2.1.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.ui.totop.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.equalheights.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.mobilemenu.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/camera.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.mobile.customized.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'booking/js/booking.js' %}"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				jQuery('#camera_wrap').camera({
+					loader: false,
+					pagination: false ,
+					minHeight: '444',
+					thumbnails: false,
+					height: '28.28125%',
+					caption: true,
+					navigation: true,
+					fx: 'mosaic'
+				});
+				$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+	</head>
+	<body class="page1" id="top">
+		<div class="main">
+<!--==============================header=================================-->
+			<!-- navbar -->
+			{%include 'navbar.html'%}
+
+<!--==============================Content=================================-->
+			<div class="content"><div class="ic"></div>
+				<div class="container_12">
+					<div class="grid_5">
+						<h3>Login</h3>
+						<form id="bookingForm"  method = "POST">
+							{% csrf_token %}
+							<div>
+								<div class="tmInput">
+									<input name="email" placeHolder="Email:" type="email" data-constraints="@NotEmpty @Required ">
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div>
+								<div class="tmInput mr0">
+									<input name="password" placeHolder="Password:" type="password" data-constraints="@NotEmpty @Required">
+								</div>
+							</div>
+							<div class="clear"></div>
+                            <input type="submit" class="btn">
+							<div>
+								{%if messages%}
+									{%for message in messages%}
+										<p style="color: red;">{{message}}</p>
+									{%endfor%}
+								{%endif%}
+							</div>
+						</form>
+					</div>
+					<div class="grid_6 prefix_1">
+						<div class="type"><img src="{% static 'images/page1_img1.jpg' %}" alt=""><span class="type_caption">Book Cab</span></div>
+						<div class="type"><img src="{% static 'images/loc.jpg' %}" alt=""><span class="type_caption">Live Location</span></div>
+						<div class="type"><img src="{% static 'images/comm.jpg' %}" alt=""><span class="type_caption">Share stories</span></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+<!--==============================footer=================================-->
+		<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="f_phone"><span>Call Us:</span> + 91xxxxxxxxxx</div>
+					<div class="socials">
+						<a href="#" class="fa fa-twitter"></a>
+						<a href="#" class="fa fa-facebook"></a>
+						<a href="#" class="fa fa-google-plus"></a>
+					</div>
+					<div class="copy">
+						<div class="st1">
+						<div class="brand">Book<span class="color1">T</span>axi </div>
+						&copy; 2019	| <a href="#">Privacy Policy</a> </div> Website designed for BTP
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</footer>
+		<script>
+			$(function (){
+				$('#bookingForm').bookingForm({
+					ownerEmail: '#'
+				});
+			})
+			$(function() {
+				$('#bookingForm input, #bookingForm textarea').placeholder();
+			});
+		</script>
+	</body>
+</html>
