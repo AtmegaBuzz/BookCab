@@ -68,7 +68,14 @@ def get_cost(duration,distance,milage,min_cost=50,seater=4):
 
 
 def databaseConnect():
-    pass
+    connection = pymysql.connect(host='localhost',
+                                 user='root',
+                                 password='admin',
+                                 db='btp',
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
+    return connection
 
 
 
