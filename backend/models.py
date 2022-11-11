@@ -4,6 +4,8 @@ from sqlalchemy.sql import func
 class CabGroup(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(120),nullable=False)
+    bookings = db.relationship('Booking',backref="cabgroup_bookings")
+
     
 
 # root destination of the organization offering the services
@@ -22,7 +24,7 @@ class Booking(db.Model):
     cost = db.Column(db.Integer,nullable=True)
     distance = db.Column(db.Integer,nullable=True)
     
-    # group = models.ForeignKey(CabGroup,on_delete=models.CASCADE,null=True,blank=True)
+    group = db.Column(db.Integer,db.ForeignKey('cab_group.id'))
     user = db.Column(db.Integer,db.ForeignKey('user.id'))
     def __str__(self):
         return f"{self.user} {self.destination} {self.status} {self.user.id}"

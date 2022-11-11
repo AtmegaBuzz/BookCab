@@ -20,49 +20,49 @@ def home():
         if form.validate_on_submit():
             destination = form.data["destination"]
         
-            # try:
-            # booking having status code ongoing
-            bookings_ongoing = Booking.query.filter_by(status=0).all()
+            try:
+                # booking having status code ongoing
+                bookings_ongoing = Booking.query.filter_by(status=0).all()
 
-            # create bookings if there are more than 4 ongoing request in queue
-            user = User.query.filter_by(email=session["user"]).first()
-            curr_booking = Booking(destination=destination,user=user.id,status=0)
-            db.session.add(curr_booking)
-            db.session.commit()
+                # create bookings if there are more than 4 ongoing request in queue
+                user = User.query.filter_by(email=session["user"]).first()
+                curr_booking = Booking(destination=destination,user=user.id,status=0)
+                db.session.add(curr_booking)
+                db.session.commit()
 
-            if len(bookings_ongoing)>=4:
-
-                groups =  main()
-                
-                for group in groups:
-                    name = f"grp{random.randint(1,10000)}:{random.randbytes(10000)}"
-                    grp = CabGroup(name=name)
-                    db.session.add(CabGroup)
-                    db.session.commit()
-
-                    for usrAttr in group:
+                if len(bookings_ongoing)>=3:
+                    print(bookings_ongoing)
+                    groups =  main()    
                     
-                        booking_a = Booking.query.filter_by(id=usrAttr.booking_id).all()
-                        for booking_ in booking_a:
-                            
-                            booking_.status = 1
-                            booking_.group = grp.id
-                            booking_.cost = usrAttr.cost
-                            booking_.distance = usrAttr.distance
-
-                        db.session.add_all(booking_a)
+                    for group in groups:
+                        name = f"grp{random.randint(1,10000)}:{random.randbytes(10000)}"
+                        grp = CabGroup(name=name)
+                        db.session.add(CabGroup)
                         db.session.commit()
 
-                        print("booking added")
-                        flash("Booking added")
+                        for usrAttr in group:
+                        
+                            booking_a = Booking.query.filter_by(id=usrAttr.booking_id).all()
+                            for booking_ in booking_a:
+                                
+                                booking_.status = 1
+                                booking_.group = grp.id
+                                booking_.cost = usrAttr.cost
+                                booking_.distance = usrAttr.distance
+
+                            db.session.add_all(booking_a)
+                            db.session.commit()
+
+                            print("booking added")
+                            flash("Booking added")
+                        
+                else:
+                    flash("request added successfuly")
                     
-            else:
-                flash("request added successfuly")
-                
-                    
-            # except Exception as e:
-            #     flash("allocation failed try again later!")
-            #     print(e,"===========")
+                        
+            except Exception as e:
+                print(e,"=========")
+                flash("allocation failed try again later!")
         
         else:
             flash(form.errors)

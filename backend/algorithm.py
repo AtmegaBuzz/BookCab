@@ -252,7 +252,7 @@ def populate_user_list(bookings) :
     try:
 
         for booking in bookings:
-            user_id = booking.user.id
+            user_id = booking.user
             dest = booking.destination
             booking_id = booking.id
             print(booking_id,"booking")
