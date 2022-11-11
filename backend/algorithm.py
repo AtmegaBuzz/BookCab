@@ -11,13 +11,25 @@ from BookCab.models import (
 
 from decouple import config
 
+print(config("google_api_key","dasdasd"),"=====")
 gmaps = googlemaps.Client(key=config("google_api_key","dasdasd"))
 
 
 
 def get_distance(src, dest):
     
-    pass
+    if src + dest in distance_matrix_map:
+        return distance_matrix_map[src + dest]
+    else :
+        my_dist = gmaps.distance_matrix(src, dest)['rows'][0]['elements'][0]
+        # print(src + " " + dest)
+        # print(my_dist["status"])
+        if my_dist["status"]=="OK":
+            distance_matrix_map[src + dest] = my_dist['distance']['value']
+            distance_matrix_map[dest + src] = my_dist['distance']['value']
+            time_matrix_map[src + dest] = my_dist['duration']['value']
+            time_matrix_map[dest + src] = my_dist['duration']['value']
+            return distance_matrix_map[src + dest]
         
         return None
 
