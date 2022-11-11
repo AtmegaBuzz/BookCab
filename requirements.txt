@@ -9,6 +9,7 @@ Flask-Login==0.6.2
 flask-marshmallow==0.14.0
 Flask-SQLAlchemy==3.0.2
 Flask-WTF==1.0.1
+googlemaps==4.7.0
 greenlet==2.0.0.post0
 idna==3.4
 imageio==2.22.3
