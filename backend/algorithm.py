@@ -257,7 +257,22 @@ def print_group_pattern(users_in_taxi) :
         
 
 def populate_user_list(bookings) :
-    pass
+    users = list()
+    
+    try:
+
+        for booking in bookings:
+            user_id = booking.user.id
+            dest = booking.destination
+            booking_id = booking.id
+            print(booking_id,"booking")
+            users.append(User(user_id, dest,booking_id))
+           
+    except Exception as e:
+        print("err",e)
+        
+    return users
+
 
 def main():
 
