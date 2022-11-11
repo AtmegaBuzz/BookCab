@@ -3,7 +3,9 @@ from wtforms import (
     EmailField,
     PasswordField,
     StringField,
-    SubmitField
+    SubmitField,
+    TimeField,
+    DateField,
 )
 from wtforms.validators import DataRequired,Length,Email
 
@@ -18,6 +20,16 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
+
     email = EmailField("Email",validators=[DataRequired(),Email()])
     password = PasswordField("Password",validators=[DataRequired(),Length(8)])
     submit = SubmitField("Register")
+
+
+class BookCabForm(FlaskForm):
+
+    destination = StringField('Destination',validators=[DataRequired()])
+    time = TimeField("Time",validators=[])
+    date = DateField("Date",validators=[])
+
+    

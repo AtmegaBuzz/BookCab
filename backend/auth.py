@@ -18,9 +18,10 @@ auth = Blueprint("auth",__name__)
 def register():
 
     user = session.get("user",None)
+    user_obj = User.query.filter_by(email=user).first()
     form = RegisterForm()
 
-    if user!=None:
+    if user_obj!=None:
         return redirect(url_for("views.home"))
 
     if request.method == "POST":
@@ -58,7 +59,8 @@ def register():
 def login():
 
     user = session.get("user",None)
-    if user!=None:
+    user_obj = User.query.filter_by(email=user).first()
+    if user_obj!=None:
         return redirect(url_for("views.home"))
     
     form = LoginForm()
