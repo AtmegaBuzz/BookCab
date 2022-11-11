@@ -7,8 +7,8 @@
                     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
                         <ul class="sf-menu">
                             {%if user%}
-                                <li ><a href="{{ url_for('auth.register') }}">Home</a></li>
-                                <li ><a href="{{ url_for('auth.register') }}">Services</a></li>
+                                <li ><a href="{{ url_for('views.home') }}">Home</a></li>
+                                <li ><a href="{{ url_for('views.services') }}">Services</a></li>
                                 <li><a href="{{ url_for('auth.register') }}">Contact Us</a></li>
                                 <li ><a href="{{ url_for('auth.logout') }}">logout</a></li>
                             {%else%}
@@ -26,7 +26,7 @@
             <div class="grid_12">
                 <h1>
                     <!--==============================home route=================================-->
-                    <a href="{{ url_for('auth.register') }}"> 
+                    <a href="{{ url_for('views.home') }}"> 
                         <img src="{{ url_for('static', filename='images/logo.png') }}" , alt = "new logo"/>
                     </a>
                 </h1>

@@ -1,5 +1,5 @@
 import random
-from flask import Blueprint, render_template, session, request, flash
+from flask import Blueprint, render_template, session, request, flash, redirect, url_for
 from backend.decorators import is_authenticated
 from backend.forms import BookCabForm
 from globals import maps_apikey
@@ -72,4 +72,21 @@ def home():
         user = session["user"],
         form = form,
         google_maps_apikey = maps_apikey
+    )
+
+
+@views.route("/services",methods=["GET","POST"])
+@is_authenticated
+def services():
+
+    user = User.query.filter_by(email=session["user"]).first()
+    if user == None:
+        return redirect(url_for("auth.login"))
+
+    curr_bookings = Booking.query.filter_by(user=user.id).all()
+
+    return render_template(
+        "services.html",
+        user = session["user"],
+        bookings = curr_bookings
     )
