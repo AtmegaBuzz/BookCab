@@ -6,7 +6,7 @@ from backend.models import (
     Source
 )
 from globals import gmaps
-
+from globals import SOURCE as home_source
 
 
 def get_distance(src, dest):
@@ -125,14 +125,7 @@ users = list()
 groups = list()
 n = 0
 answer = 1e9
-home_source = Source.objects.values_list(
-    "location_name"
-    ).all().first()[0]
 
-
-# set default root location
-if not home_source:
-    source = 'rajiv chowk'
 
 def solve(taxino, curloc, curtime, users_in_taxi, cost, best_config):
 
@@ -277,7 +270,7 @@ def main():
     global users
     global groups
    
-    bookings = Booking.objects.all().filter(status=0)
+    bookings = Booking.query.filter_by(status=0).all()
     users = populate_user_list(bookings)
     n = len(users)
     users_in_taxi = [0 for i in range(n)]
