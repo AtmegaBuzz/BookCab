@@ -79,19 +79,22 @@
 					<div class="grid_5">
 						<h3>Login</h3>
 						<form id="bookingForm"  method = "POST">
+							{{ form.hidden_tag() }}
 							<div>
 								<div class="tmInput">
-									<input name="email" placeHolder="Email:" type="email" data-constraints="@NotEmpty @Required ">
+									{{ form.email.label }}
+									{{ form.email() }}
 								</div>
 							</div>
 							<div class="clear"></div>
 							<div>
 								<div class="tmInput mr0">
-									<input name="password" placeHolder="Password:" type="password" data-constraints="@NotEmpty @Required">
+									{{ form.password.label }}
+									{{ form.password() }}
 								</div>
 							</div>
 							<div class="clear"></div>
-                            <input type="submit" class="btn">
+                            	{{ form.submit() }}
 							<div>
 								{%if messages%}
 									{%for message in messages%}
