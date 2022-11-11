@@ -1,0 +1,11 @@
+version: "3.10"
+
+services:
+  backend:
+    build: .
+    restart: on-failure
+    command: python3 server.py
+    volumes:
+      - .:/code
+    ports:
+      - "5000:5000"
