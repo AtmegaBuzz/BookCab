@@ -1,29 +1,26 @@
-import googlemaps
 import math
-import pymysql
 import os
-
 from itertools import permutations
-from BookCab.models import (
+from backend.models import (
     Booking,
     Source
 )
-
-from decouple import config
-
-print(config("google_api_key","dasdasd"),"=====")
-gmaps = googlemaps.Client(key=config("google_api_key","dasdasd"))
+from globals import gmaps
 
 
 
 def get_distance(src, dest):
     
+    '''
+        Calculate distance between source and single destincation
+        this will be used with duration to calculate the priority order to dropping a user
+    '''
+
     if src + dest in distance_matrix_map:
         return distance_matrix_map[src + dest]
     else :
         my_dist = gmaps.distance_matrix(src, dest)['rows'][0]['elements'][0]
-        # print(src + " " + dest)
-        # print(my_dist["status"])
+
         if my_dist["status"]=="OK":
             distance_matrix_map[src + dest] = my_dist['distance']['value']
             distance_matrix_map[dest + src] = my_dist['distance']['value']
@@ -34,6 +31,12 @@ def get_distance(src, dest):
         return None
 
 def get_duration(src, dest) :
+
+    '''
+        Calculate duration between source and single destincation
+        this will be used with distance to calculate the priority order to dropping a user
+    '''
+
     if (src + dest) in time_matrix_map:
         return time_matrix_map[src + dest]
     else :
@@ -48,6 +51,11 @@ def get_duration(src, dest) :
 
 
 def get_cost(duration,distance,milage,min_cost=50,seater=4):
+
+    '''
+        Calculates fuel cost of the registerd vehical to get best price 
+        accoring to the deployed cars performance
+    '''
     
     fuel_price = 0
     
@@ -60,25 +68,6 @@ def get_cost(duration,distance,milage,min_cost=50,seater=4):
     
     return total_cost
     
-    
-    
-    
-
-
-
-
-def databaseConnect():
-    connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='admin',
-                                 db='btp',
-                                 charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
-
-    return connection
-
-
-
 
 distance_matrix_map = dict()
 time_matrix_map = dict()
@@ -187,6 +176,14 @@ def solve(taxino, curloc, curtime, users_in_taxi, cost, best_config):
 
 
 def cost_calculator(dist, tot_dist, min_cost, tot_cost) :
+
+    '''
+        calculate cost by considering distance of each user from source 
+        and total distance coverd in then end.
+        considering:
+         - min cost which should be paid
+    '''
+
     val = (1.0 * dist) / (1.0 * tot_dist)
     val *= tot_cost
     val = math.floor(val)
@@ -289,7 +286,7 @@ def main():
 
     print_group_pattern(best_config)
 
-
+    # dividing people in groups of 4
     return groups
         
     
