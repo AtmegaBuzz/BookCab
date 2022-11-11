@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Contact Us</title>
+		<meta charset="utf-8">
+		<meta name = "format-detection" content = "telephone=no" />
+
+		<link  rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" >
+        <link  rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" >
+
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico" />
+
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-migrate-1.2.1.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/superfish.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.ui.totop.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.equalheights.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.mobilemenu.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/owl.carousel.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/camera.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.mobile.customized.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='booking/js/booking.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/TMForm.js') }}"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				jQuery('#camera_wrap').camera({
+					loader: false,
+					pagination: false ,
+					minHeight: '444',
+					thumbnails: false,
+					height: '28.28125%',
+					caption: true,
+					navigation: true,
+					fx: 'mosaic'
+				});
+				$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+	</head>
+	<body class="page1" id="top">
+		<div class="main">
+<!--==============================header=================================-->
+			<!-- navbar -->
+			{%include 'navbar.html'%}
+<!--==============================Content=================================-->
+			<div class="content"><div class="ic"></div>
+				<div class="container_12">
+				<!-- map embedding -->
+					<div class="grid_12">
+						<h3>Find Us</h3>
+						<div class="map">
+							<figure>
+								<iframe  src="https://www.google.com/maps/embed/v1/place?key={{ MAPS_APIKEY }}&q=delhi,dtu" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>							</figure>
+						</div>
+					</div>
+					<div class="grid_5">
+						<h3>Contact Info</h3>
+						<div class="map">
+							<div class="text1 color2">This website is designed for project and research work only and is not meant for any personal or commercial purposes.</div>
+							<p>Use <span class="color1"><a href="http://www.google.com/" rel="nofollow"> <u>link </u></a></span> if you need any help or have any queries regarding the project. </p>
+							<div class="text1 color2">
+							<p> Address: </p>
+							</div>
+							<address>
+								<dl>
+									<dt>Delhi Technological University,<br>
+										Sector-27, Western Yamuna Canal Link Road,<br>
+										Delhi - 110042.
+									</dt>
+									<dd><span>Telephone:</span> +91xxxxxxxxxxx</dd>
+									<dd><span>Mobile No.:</span> +91xxxxxxxxxxx</dd>
+									<dd>E-mail: <a href="#" class="color1">	registrar@dtu.ac.in</a></dd>
+								</dl>
+							</address>
+						</div>
+					</div>
+					<div class="grid_6 prefix_1">
+						<h3>Contact Form</h3>
+						<form id="form" action = "/contact" method = "POST">
+							<div class="success_wrapper">
+								<div class="success-message">Contact form submitted</div>
+							</div>
+							<label class="name">
+								<input type="text" name="name" placeholder="Name:" data-constraints="@Required @JustLetters" />
+								<span class="empty-message">*This field is required.</span>
+								<span class="error-message">*This is not a valid name.</span>
+							</label>
+							<label class="email">
+								<input type="email" name="email" placeholder="E-mail:" data-constraints="@Required @Email" />
+								<span class="empty-message">*This field is required.</span>
+								<span class="error-message">*This is not a valid email.</span>
+							</label>
+							<label class="phone">
+								<input type="number" name="phone" placeholder="Phone:" data-constraints="@Required @JustNumbers"/>
+								<span class="empty-message">*This field is required.</span>
+								<span class="error-message">*This is not a valid phone.</span>
+							</label>
+							<label class="message">
+								<textarea name="message" placeholder="Message:" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+								<span class="empty-message">*This field is required.</span>
+								<span class="error-message">*The message is too short.</span>
+							</label>
+							<div>
+								<div class="clear"></div>
+								<div class="btns">
+									<a href="/contact" data-type="submit" class="btn">Send</a>
+									<a href="#" data-type="reset" class="btn">Clear</a>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+<!--==============================footer=================================-->
+		<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="f_phone"><span>Call Us:</span> + 91xxxxxxxxxx</div>
+					<div class="socials">
+						<a href="#" class="fa fa-twitter"></a>
+						<a href="#" class="fa fa-facebook"></a>
+						<a href="#" class="fa fa-google-plus"></a>
+					</div>
+					<div class="copy">
+						<div class="st1">
+						<div class="brand">Book<span class="color1">T</span>axi </div>
+						&copy; 2021	| <a href="#">Privacy Policy</a> </div> Website designed for One Source Multiple Destination(osmd)
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</footer>
+	</body>
+</html>

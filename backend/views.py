@@ -75,7 +75,7 @@ def home():
     )
 
 
-@views.route("/services",methods=["GET","POST"])
+@views.route("/services",methods=["GET"])
 @is_authenticated
 def services():
 
@@ -89,4 +89,17 @@ def services():
         "services.html",
         user = session["user"],
         bookings = curr_bookings
+    )
+
+@views.route("/contact",methods=["GET"])
+@is_authenticated
+def contact():
+
+    user = User.query.filter_by(email=session["user"]).first()
+    if user == None:
+        return redirect(url_for("auth.login"))
+
+    return render_template(
+        "contact.html",
+        user = session["user"],
     )

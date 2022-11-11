@@ -9,7 +9,7 @@
                             {%if user%}
                                 <li ><a href="{{ url_for('views.home') }}">Home</a></li>
                                 <li ><a href="{{ url_for('views.services') }}">Services</a></li>
-                                <li><a href="{{ url_for('auth.register') }}">Contact Us</a></li>
+                                <li><a href="{{ url_for('views.contact') }}">Contact Us</a></li>
                                 <li ><a href="{{ url_for('auth.logout') }}">logout</a></li>
                             {%else%}
                                 <li ><a href="{{ url_for('auth.login') }}">Login</a></li>
