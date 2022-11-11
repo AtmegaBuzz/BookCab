@@ -58,30 +58,24 @@
 						<form id="bookingForm" method = "POST">
 							{{ form.hidden_tag() }}
 								<div class="tmInput">
-									<!-- <input name="name" placeHolder="Name:" type="text" data-constraints='@NotEmpty @Required @AlphaSpecial'> -->
-									{{form.name.label}}
-									{{form.name(size=20)}}
+									{{ form.name.label }}
+									{{ form.name() }}
 								</div>
 								<div class="tmInput">
-									<!-- <input name="phone" placeHolder="Phone No." type="number" data-constraints="@NotEmpty @Required "> -->
-									{{form.phone_number.label}}
-									{{form.phone_number(size=12)}}
+									{{ form.phone_number.label }}
+									{{ form.phone_number() }}
 								</div>
 								<div class="tmInput">
-									<!-- <input name="email" placeHolder="Email:" type="email" data-constraints="@NotEmpty @Required @Email"> -->
-									{{form.email.label}}
-									{{form.email()}}
+									{{ form.email.label }}
+									{{ form.email() }}
 								</div>
 							<div class="clear"></div>
 								<div class="tmInput mr0">
-									<!-- <input name="password" placeHolder="Password:" type="password" data-constraints="@NotEmpty @Required"> -->
-									{{form.password.label}}
-									{{form.password(size=16)}}
+									{{ form.password.label }}
+									{{ form.password() }}
 								</div>
 							<div class="clear"></div>
-							<!-- <a href="#" class="btn" data-type="submit">Submit</a> -->
-                            <!-- <input type="submit" class="btn"> -->
-							{{form.submit(class="btn")}}
+								{{ form.submit(class="btn") }}
 							<div>
 								{% for message in get_flashed_messages() %}
 									<p style="color: red;">{{message}}</p>

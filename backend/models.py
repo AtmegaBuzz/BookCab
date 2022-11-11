@@ -35,7 +35,7 @@ class User(db.Model):
     email = db.Column(db.String(200),unique=True,nullable=False)
     phone_number = db.Column(db.String(16),nullable=True)
     password = db.Column(db.String(16),nullable=False)
-    bookings = db.relationship('User',backref="user_bookings")
+    bookings = db.relationship('Booking',backref="user_bookings")
 
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     update_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
