@@ -86,11 +86,34 @@ time_matrix_map = dict()
 
 
 class dpstate:
-    pass
+    def __init__(self, taxino, curloc, curtime, users_in_taxi):
+        self.taxino = taxino
+        self.curloc = curloc
+        self.curtime = curtime
+        self.users_in_taxi = users_in_taxi
+
+    def __hash__(self):
+        val = 0
+        for i in self.users_in_taxi:
+            val += i * i
+        return hash((self.taxino, self.curloc, self.curtime)) + val
+
+    def __eq__(self, other):
+        return (self.taxino, self.curloc, self.curtime, self.users_in_taxi) == (other.taxino, other.curloc, other.curtime, other.users_in_taxi)
+
+    def to_string(self):
+        return self.taxino + " " + self.curloc + " " + self.curtime + " " + self.users_in_taxi
+
 
 class User:
 
-    pass
+    def __init__(self, id, destination,booking_id):
+        self.id = id
+        self.destination = destination
+        self.booking_id = booking_id
+        
+    def to_string(self):
+        return self.id + " " + self.destination
 
 
 class UserAttributes:
