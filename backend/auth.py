@@ -87,3 +87,11 @@ def login():
         user = user,
         form = form
     ) 
+
+
+
+@auth.route("/logout",methods=["GET"])
+def logout():
+    
+    session["user"] = None
+    return redirect(url_for("auth.login"))
