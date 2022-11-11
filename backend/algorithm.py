@@ -34,14 +34,31 @@ def get_distance(src, dest):
         return None
 
 def get_duration(src, dest) :
-    pass
+    if (src + dest) in time_matrix_map:
+        return time_matrix_map[src + dest]
+    else :
+        my_dist = gmaps.distance_matrix(src, dest)['rows'][0]['elements'][0]
+        distance_matrix_map[src + dest] = my_dist['distance']['value']
+        distance_matrix_map[dest + src] = my_dist['distance']['value']
+        time_matrix_map[src + dest] = my_dist['duration']['value']
+        time_matrix_map[dest + src] = my_dist['duration']['value']
+        return time_matrix_map[src + dest]
 
 
 
 
 def get_cost(duration,distance,milage,min_cost=50,seater=4):
     
-    pass
+    fuel_price = 0
+    
+    fuel_to_burn = distance/milage
+    base_cost = (fuel_to_burn*fuel_price) + min_cost
+    additional_cost = (base_cost/100)*seater # seater cost
+    gst = ((base_cost+additional_cost)/100)*18 # 18 % gst
+    
+    total_cost =  base_cost+additional_cost+gst
+    
+    return total_cost
     
     
     
