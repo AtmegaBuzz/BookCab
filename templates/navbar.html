@@ -6,7 +6,7 @@
                 <div class="grid_12">
                     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
                         <ul class="sf-menu">
-                            {%if user.is_authenticated%}
+                            {%if user%}
                                 <li ><a href="{{ url_for('auth.register') }}">Home</a></li>
                                 <li ><a href="{{ url_for('auth.register') }}">Services</a></li>
                                 <li><a href="{{ url_for('auth.register') }}">Contact Us</a></li>

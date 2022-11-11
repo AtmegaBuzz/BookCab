@@ -21,7 +21,7 @@ def register():
     form = RegisterForm()
 
     if user!=None:
-        return redirect("/home")
+        return redirect(url_for("views.home"))
 
     if request.method == "POST":
 
@@ -59,21 +59,21 @@ def login():
 
     user = session.get("user",None)
     if user!=None:
-        return redirect("/home")
+        return redirect(url_for("views.home"))
     
     form = LoginForm()
 
     if request.method == "POST":
         
         if form.validate_on_submit():
-            print(form.data)
+
             user = User.query.filter_by(
                 email = form.data["email"]
             ).first()
 
             if user and check_password_hash(user.password,form.data["password"]):
-                session["user"] = user
-                return redirect(url_for("home"))
+                session["user"] = user.email
+                return redirect(url_for("views.home"))
 
             flash("Incorrect Credentials")
 
