@@ -195,7 +195,65 @@ def cost_calculator(dist, tot_dist, min_cost, tot_cost) :
 
 
 def print_group_pattern(users_in_taxi) :
-    pass
+    users_done = 0
+
+    try:
+        for i in range(2, 1000):
+            if users_done >= n:
+                return
+
+            
+            cur_cab_users = list()
+            print("Taxi #" + str(i - 1) + ": ")
+            for j in range(0, n):
+                if users_in_taxi[j] == i:
+                    print(str(users[j].id) + " ")
+                    users_done += 1
+                    cur_cab_users.append(users[j])
+            print("")
+            # Process current cab users to form person attribute object for each of the user sitting in this cab
+            tot_users = len(cur_cab_users)
+            if tot_users == 0 :
+                return
+            # Groups is a list which is the final object to be sent to front end and comprises of a list of "group" and each "group" is a list of "UserAttributes"
+            # We are here to find current group details
+            group = list()
+            perm = list()
+            for x in range(0, tot_users):
+                perm.append(x)
+            perm_list = permutations(perm)
+
+            min_dist = 1e9
+            for candidate in perm_list:
+                cur_dist = get_distance(home_source, cur_cab_users[candidate[0]].destination)
+                for idx in range(1, tot_users):
+                    cur_dist += get_distance(cur_cab_users[candidate[idx - 1]].destination, cur_cab_users[candidate[idx]].destination)
+
+                if(cur_dist > min_dist):
+                    continue
+                # Update the best group
+                print(candidate)
+                group.clear()
+                min_dist = cur_dist
+                dur_so_far = get_duration(home_source, cur_cab_users[candidate[0]].destination)
+                dist_so_far = get_distance(home_source, cur_cab_users[candidate[0]].destination)
+                minimum_cost = 53
+                total_cost = 60 + 12 * ((1.0 * cur_dist)/ (1000.0))
+
+                group.append(UserAttributes(cur_cab_users[candidate[0]].id, cur_cab_users[candidate[0]].destination,cur_cab_users[candidate[0]].booking_id,
+                                            dist_so_far, dur_so_far, cost_calculator(dist_so_far, cur_dist, minimum_cost, total_cost)))
+
+                for idx in range(1, tot_users):
+                    dur_so_far += get_duration(cur_cab_users[candidate[idx - 1]].destination, cur_cab_users[candidate[idx]].destination)
+                    dist_so_far = get_distance(cur_cab_users[candidate[idx - 1]].destination, cur_cab_users[candidate[idx]].destination)
+
+                    group.append(UserAttributes(cur_cab_users[candidate[idx]].id, cur_cab_users[candidate[idx]].destination,cur_cab_users[candidate[idx]].booking_id,
+                                                dist_so_far, dur_so_far,cost_calculator(dist_so_far, cur_dist, minimum_cost, total_cost)))
+            
+            groups.append(group)
+            
+    except:
+        print("")
         
 
 def populate_user_list(bookings) :
