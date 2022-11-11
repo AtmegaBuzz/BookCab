@@ -2,6 +2,7 @@
 
 {% block title %} Home {% endblock %}
 
+
 {% block body %}		
 	<div class="slider_wrapper ">
 		<div id="camera_wrap" class="">
@@ -61,53 +62,37 @@
 			<div class="grid_5">
 				<h3>Book a cab</h3>
 				<form id="bookingForm" method = "POST">
-					
+					{{ form.hidden_tag() }}
 					<div class="tmInput mr0">
-						<input name="destination" id="destination" placeHolder="To:" type="text" data-constraints="@NotEmpty @Required">
+						{{ form.destination.label }}
+						{{ form.destination(id="destination-autocomplete") }}
 						<script>
-						function initMap() {
-							var input = document.getElementById('destination');
-
-							var autocomplete = new google.maps.places.Autocomplete(input);
-
-							autocomplete.addListener('place_changed', function() {
-								var place = autocomplete.getPlace();
-								console.log(place);
-							});
-						}
+							function initMap() {
+								new google.maps.places.Autocomplete(
+									document.getElementById('destination-autocomplete')
+								)
+							}
 						</script>
-						<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR9lt1hVQn_oWnGFAs9vP_yyZ-ORaVGz0=initMap"></script>
 					</div>
 
 					<div class="clear"></div>
-					<strong>Time</strong>
+					<strong>{{ form.time.label }}</strong>
 					<div class="tmInput">
-						<input name="time" id="tmtime" type="text" data-constraints="@NotEmpty @Required">
-							<script>
-								var today = new Date();
-								var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-								document.getElementById("tmtime").value = time;
-						</script>
+						{{ form.time() }}
 					</div>
 					<div class="clear"></div>
 					<strong>Date</strong>
 					<label class="tmDatepicker">
-						<input type="text" name="Date"  id="tmdate" data-constraints="@NotEmpty @Required @Date">
-						<script>
-								var today = new Date();
-								var date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYear();
-								document.getElementById("tmdate").value = date;
-						</script>
+						{{ form.date.label }}
+						{{ form.date() }}
 					</label>
 					<div class="clear"></div>
 					<!-- <a href="/addRequest" class="btn" data-type="submit">Submit</a> -->
 					<input type="submit" class="btn">
 
-					{%if messages%}
-						{%for message in messages%}
-							<p style="color: green;">{{message}}</p>
-						{%endfor%}
-					{%endif%}
+					{% for message in get_flashed_messages() %}
+						<p style="color: green;">{{message}}</p>
+					{% endfor %}
 
 				</form>
 			</div>
@@ -121,4 +106,9 @@
 	</div>
 </div>
 
+{% endblock %}
+
+
+{% block jsend %} 
+	<script src="https://maps.googleapis.com/maps/api/js?key={{google_maps_apikey}}&libraries=places&callback=initMap"></script>
 {% endblock %}
