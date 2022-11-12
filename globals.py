@@ -1,6 +1,5 @@
 import googlemaps
 import os
-from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 
@@ -29,4 +28,3 @@ if maps_apikey == None:
 gmaps = googlemaps.Client(key=maps_apikey)
 
 db = SQLAlchemy()
-ma = Marshmallow()

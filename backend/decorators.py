@@ -5,8 +5,10 @@ from backend.models import User
 def is_authenticated(func):
     @wraps(func)
     def wrapper(*args,**kwargs):
-        user_obj = User.query.filter_by(email=session["user"]).first()
-        if session["user"] == None or user_obj == None:
+
+        urs = session.get("user",None)
+        user_obj = User.query.filter_by(email=urs).first()
+        if urs == None or user_obj == None:
             return redirect(url_for("auth.login"))
         
         return func(*args,**kwargs)

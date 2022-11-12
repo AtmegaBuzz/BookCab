@@ -1,13 +1,11 @@
 
 import os
 from flask import Flask
-from flask_login import LoginManager
 from globals import (
     UPLOAD_FOLDER,
     DB_NAME,
     SECRET_KEY,
     db,
-    ma,
     STATIC_URI,
     TEMPLATES_URI
 )
@@ -39,18 +37,6 @@ def create_app():
     )
 
     create_database(app)
-
-    login_manager = LoginManager()
-    login_manager.init_app(app)
-    login_manager.login_view = "login"
-
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
-
-
-    # serialize/deserialize library 
-    ma.init_app(app)    
 
     return app
 
