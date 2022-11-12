@@ -30,19 +30,19 @@ def home():
                 db.session.add(curr_booking)
                 db.session.commit()
 
-                if len(bookings_ongoing)>=3:
+                if len(bookings_ongoing)>=4:
                     print(bookings_ongoing)
                     groups =  main()    
-                    
+
                     for group in groups:
                         name = f"grp{random.randint(1,10000)}:{random.randbytes(10000)}"
                         grp = CabGroup(name=name)
-                        db.session.add(CabGroup)
+                        db.session.add(grp)
                         db.session.commit()
-
                         for usrAttr in group:
                         
                             booking_a = Booking.query.filter_by(id=usrAttr.booking_id).all()
+
                             for booking_ in booking_a:
                                 
                                 booking_.status = 1
@@ -53,7 +53,6 @@ def home():
                             db.session.add_all(booking_a)
                             db.session.commit()
 
-                            print("booking added")
                             flash("Booking added")
                         
                 else:
@@ -109,7 +108,7 @@ def contact():
 @is_authenticated
 def detail_group(pk):
 
-    print(pk)
+    print(pk,"====")
 
     return render_template(
         "detail-group.html",

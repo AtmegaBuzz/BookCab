@@ -66,7 +66,7 @@
                                                                         }
                                                                     </style>
                                                                     {%if booking.status == 1%}
-                                                                        <a href="{{ url('detail_group',booking.group.id) }}" class="tire font-medium text-gray-800">{{booking.destination}}</a>
+                                                                        <a href="{{ url_for('views.detail_group',pk=booking.group) }}" class="tire font-medium text-gray-800">{{booking.destination}}</a>
                                                                     {%else%}
                                                                         <a class="tire font-medium text-gray-800">{{booking.destination}}</a>
                                                                     {%endif%}
