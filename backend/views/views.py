@@ -1,5 +1,5 @@
 import random
-from flask import Blueprint, render_template, session, request, flash, redirect, url_for
+from flask import Blueprint, render_template, session, request, flash, redirect, url_for 
 from backend.decorators import is_authenticated
 from backend.forms import BookCabForm
 from globals import maps_apikey
@@ -108,9 +108,14 @@ def contact():
 @is_authenticated
 def detail_group(pk):
 
-    print(pk,"====")
+    shared_cab_group = CabGroup.query.filter_by(id=pk).first()
+    if shared_cab_group == None:
+        return "404 page not found \n group does not exist"
+
+    bookings = shared_cab_group.bookings
 
     return render_template(
         "detail-group.html",
-        user=session["user"]
+        user=session["user"],
+        grp_bookings = bookings
     )
