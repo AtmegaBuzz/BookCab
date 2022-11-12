@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{%block title%} Booking {% endblock %}
+
+{% block body %}
+
+		<div class="content">
+			<div class="ic"></div>
+			<div class="container_12">
+				<div class="grid_12">
+					<h3>Services Overview</h3>
+				</div>
+
+
+
+				<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+				
+				<!-- Snippet -->
+				<section class="flex w-full flex-col justify-center antialiased bg-gray-100 text-gray-600  p-1 mb-8">
+					<div class="h-full">
+						<!-- Table -->
+						<div class="w-full  mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+							<header class="px-5 py-4 border-b border-gray-100">
+								<h2 class="font-semibold text-gray-800"> Your Bookings</h2>
+							</header>
+							<div class="p-3">
+								<div class="overflow-x-auto">
+									<table class="table-auto w-full">
+										<thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+																			
+											<tr>
+												<th class="p-2 whitespace-nowrap">
+													<div class="font-semibold text-left">Destination</div>
+												</th>
+												<th class="p-2 whitespace-nowrap">
+													<div class="font-semibold text-left">Person</div>
+												</th>
+												<th class="p-2 whitespace-nowrap">
+													<div class="font-semibold text-left">Fare</div>
+												</th>
+												<th class="p-2 whitespace-nowrap">
+													<div class="font-semibold text-center">Status</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody class="text-sm divide-y divide-gray-100">
+											
+
+											
+
+												{%for booking in grp_bookings%}
+
+													<tr>
+														<td class="p-2 whitespace-nowrap">
+															<div class="flex items-center">
+				
+																<div class="font-medium text-gray-800">{{booking.destination}}</div>
+															</div>
+														</td>
+														<td class="p-2 whitespace-nowrap">
+															
+															<div class="text-left" style="color: orange;">{{booking.user.email}}</div>
+																											
+														
+														</td>
+														<td class="p-2 whitespace-nowrap">
+															{%if booking.status == 1%}
+																<div class="text-left font-medium text-green-500">₹{{booking.cost}}</div>
+															{%else%}
+															<div class="text-left font-medium text-green-500">0</div>
+
+															{%endif%}														
+														</td>
+														<td class="p-2 whitespace-nowrap">
+															{%if booking.status == 1%}
+																<div class="text-lg text-center" style="color: green;">Cab Booked</div>
+															{%else%}
+																<div class="text-lg text-center" style="color: red;">ongoing</div>
+															{%endif%}
+															
+														</td>
+													</tr>
+
+												{%endfor%}
+
+											
+											
+																				
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</div> 
+				</section>
+				<script>
+					let redirect = ()=>{
+						window.location.href = "{%url 'room' group_id%}"
+					}
+				</script>
+				<style>
+
+				</style>
+				<button class="btn btn-primary" onclick="redirect()">Chat</button>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
