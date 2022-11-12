@@ -28,7 +28,7 @@ def get_distance(src, dest):
             time_matrix_map[dest + src] = my_dist['duration']['value']
             return distance_matrix_map[src + dest]
         
-        return None
+        return 0
 
 def get_duration(src, dest) :
 

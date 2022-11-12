@@ -103,3 +103,15 @@ def contact():
         "contact.html",
         user = session["user"],
     )
+
+
+@views.route("/detail_group/<pk>",methods=["GET"])
+@is_authenticated
+def detail_group(pk):
+
+    print(pk)
+
+    return render_template(
+        "detail-group.html",
+        user=session["user"]
+    )
