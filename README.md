@@ -25,11 +25,11 @@
 
 # OSMD Cab Infrastructure
 
-One Source, Multiple Destination Book Cab App, is a cab app Website that focuses on optimizing the approach of booking shared from a single source.
+- One Source, Multiple Destination Book Cab App, is a cab app Website that focuses on optimizing the approach of booking shared from a single source.
 
-We target organizations such as large MNC offices, Schools, or prominent gathering places, which are handled by an organization that has many individuals and wants to implement their own cab services.
+- We target organizations such as large MNC offices, Schools, or prominent gathering places, which are handled by an organization that has many individuals and wants to implement their own cab services.
 
-This Idea focuses on providing the common Open-Source Infrastructure to the Organizations to implement their own software in delivering the cab services. 
+- This Idea focuses on providing the common Open-Source Infrastructure to the Organizations to implement their own software in delivering the cab services or integrate in already existing infrastructure. 
 
 <a id="Working"></a>
 
@@ -38,6 +38,10 @@ This Idea focuses on providing the common Open-Source Infrastructure to the Orga
 1.It Is based on Bellman Ford algorith for shortest path | One source Multiple destination.
 2.This app takes the Const Starting point which will be same for all users , it can be a organisation or a school.
 3.then it optimises the path for one source to multiple destination
+
+## What is Bellman-Ford Algorithm 
+The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.
+
 
 <a id="Login"></a>
 
