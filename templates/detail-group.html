@@ -95,7 +95,7 @@
 				</section>
 				<script>
 					let redirect = ()=>{
-						window.location.href = "{{ url_for('room', pk=group_id) }}"
+						window.location.href = "{{ url_for('views.chat', pk=pk) }}"
 					}
 				</script>
 				<style>
