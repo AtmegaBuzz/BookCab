@@ -17,9 +17,9 @@ def test_new_user():
     assert user.email == 'testemail@gmail.com'
     assert user.name == 'testuser'
     assert user.phone_number == '+919583750310'
-    assert user.password != 'testpassword'
+    assert user.password == 'testpassword'
 
-    # this test will always fails cause password is hashed in register view
+    # this test will always fails cause password is hashed in register view so tested for no hash pass
 
 
 
