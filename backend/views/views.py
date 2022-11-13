@@ -117,5 +117,17 @@ def detail_group(pk):
     return render_template(
         "detail-group.html",
         user=session["user"],
-        grp_bookings = bookings
+        grp_bookings = bookings,
+        pk=pk
+    )
+
+
+@views.route("/chat/<pk>",methods=["GET"])
+@is_authenticated
+def chat(pk):
+
+    return render_template(
+        'chat.html',
+        room=pk,
+        user = session["user"]
     )

@@ -75,6 +75,7 @@ def login():
 
             if user and check_password_hash(user.password,form.data["password"]):
                 session["user"] = user.email
+                session["username"] = user.name
                 return redirect(url_for("views.home"))
 
             flash("Incorrect Credentials")
