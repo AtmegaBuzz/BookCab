@@ -93,6 +93,11 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
 
 <a id="run"></a>
 
+#### Setup using docker
+- For ````docker build .````
+- For docker compose run ````docker-compose up````
+
+
 #### Setup and Run the Application
  - ```pip install requirements.txt``` 
  - ```python manage.py makemigrations```
