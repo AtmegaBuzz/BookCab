@@ -10,13 +10,14 @@ from globals import (
     TEMPLATES_URI
 )
 
-def create_app():
+def create_app(testing=False):
 
     app = Flask(__name__)
 
     app.config["SECRET_KEY"] = SECRET_KEY
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+    app.config["TESTING"] = testing
     app.static_folder = STATIC_URI
     app.template_folder = TEMPLATES_URI
 
