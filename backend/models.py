@@ -19,7 +19,7 @@ class Booking(db.Model):
     
     id = db.Column(db.Integer,primary_key=True)
     destination = db.Column(db.String(50),nullable=True)
-    status = db.Column(db.Integer,nullable=True)
+    status = db.Column(db.Integer,nullable=True) # 0 = booking ongoing | 1 = booking accepted
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     cost = db.Column(db.Integer,nullable=True)
     distance = db.Column(db.Integer,nullable=True)
