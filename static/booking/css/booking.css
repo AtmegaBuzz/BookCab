@@ -525,3 +525,8 @@ button.ui-state-default:hover {
   background-color: transparent;
   border: 0;
 }
+
+#map-canvas {
+  height: 100%;
+  width: 100%;
+}

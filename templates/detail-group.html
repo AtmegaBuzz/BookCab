@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {%block title%} Booking {% endblock %}
 
+
 {% block body %}
 
 		<div class="content">
@@ -80,29 +81,66 @@
 														</td>
 													</tr>
 
-												{%endfor%}
-
-											
-											
-																				
+												{%endfor%}								
 										</tbody>
 									</table>
 								</div>
+								<div>
+									
+								</div>
 							</div>
 						</div>
-
 					</div> 
+					<button class="btn btn-primary" onclick="redirect()">Chat</button>
 				</section>
+
+				<div class="mod-directions">
+					<div class="mod-directions-map">
+					  <iframe id="mod-directions-map-passive-iframe" width="600" height="450" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q={arrival}&key={{MAPS_APIKEY}}"></iframe>
+					  <iframe id="mod-directions-map-active-iframe" width="600" height="450" frameborder="0" style="display: none;" src="https://www.google.com/maps/embed/v1/directions?origin={departure}&destination={arrival}&key={{MAPS_APIKEY}}"></iframe>
+					  <button id="mod-directions-form-submit" class="btn btn-primary">Show Route</button>
+					</div>
+				</div>
+
+
 				<script>
+					
 					let redirect = ()=>{
 						window.location.href = "{{ url_for('views.chat', pk=pk) }}"
 					}
+
+					jQuery(document).ready(function(){
+						var departure = {value:"{{ SOURCE }}"};
+						var arrival = {value:"{{ DROP }}"};
+						var submit = document.getElementById("mod-directions-form-submit");
+						var active_frame = document.getElementById("mod-directions-map-active-iframe");
+						var passive_frame = document.getElementById("mod-directions-map-passive-iframe");
+
+						changePassiveFrameUrl();
+						
+						function changeActiveFrameUrl(){
+							var departure_value = departure.value;
+							var arrival_value = arrival.value;
+							var active_frame_url = active_frame.src;
+							active_frame_url = active_frame_url.replace("{arrival}", arrival_value)
+							.replace("{departure}", departure_value);
+							active_frame.src = active_frame_url;
+						}
+						
+						function changePassiveFrameUrl(){
+							var arrival_value = arrival.value;
+							var passive_frame_url = passive_frame.src;
+							passive_frame_url = passive_frame_url.replace("{arrival}", arrival_value);
+							passive_frame.src = passive_frame_url;
+						}
+						
+						submit.onclick = function(){
+							changeActiveFrameUrl();
+							passive_frame.style.display = "none";
+							active_frame.style.display = "block";
+						}
+					});
 				</script>
-				<style>
-
-				</style>
-				<button class="btn btn-primary" onclick="redirect()">Chat</button>
-
     </div>
 </div>
 </div>

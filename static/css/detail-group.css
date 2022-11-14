@@ -1,0 +1,46 @@
+@import "compass";
+
+.mod-directions {
+	 font-family: "Arial";
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 margin-top: 50px;
+}
+ .mod-directions .mod-directions-form .mod-directions-form-row {
+	 overflow: hidden;
+	 margin-bottom: 24px;
+}
+ .mod-directions .mod-directions-form .mod-directions-form-row .mod-directions-form-label {
+	 display: inline-block;
+	 vertical-align: middle;
+	 width: 150px;
+	 font-weight: bold;
+	 font-size: 13px;
+}
+ .mod-directions .mod-directions-form .mod-directions-form-row .mod-directions-form-input-block {
+	 display: inline-block;
+	 vertical-align: middle;
+	 padding: 6px;
+	 background: white;
+	 border: 2px solid lightgray;
+	 font-size: 14px;
+	 color: #34495e;
+	 outline: 0;
+}
+ .mod-directions .mod-directions-form .mod-directions-form-row .mod-directions-form-input-block:focus, .mod-directions .mod-directions-form .mod-directions-form-row .mod-directions-form-input-block:active {
+	 border-color: #1abc9c;
+}
+ .mod-directions .mod-directions-form .mod-directions-form-row .mod-directions-form-submit {
+	 margin-left: 150px;
+	 background: #1abc9c;
+	 color: white;
+	 padding: 8px 15px;
+	 border: none;
+}
+
+ 
+#mod-directions-form-submit{
+	width: 100%;
+}

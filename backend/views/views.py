@@ -5,7 +5,7 @@ from backend.forms import BookCabForm
 from globals import maps_apikey
 from backend.models import Booking, User, CabGroup
 from backend.algorithm import main
-from globals import db
+from globals import db, maps_apikey, SOURCE
 
 views = Blueprint("views",__name__)
 
@@ -101,6 +101,8 @@ def contact():
     return render_template(
         "contact.html",
         user = session["user"],
+        MAPS_APIKEY = maps_apikey,
+        SOURCE_LOCATION = SOURCE
     )
 
 
@@ -109,16 +111,25 @@ def contact():
 def detail_group(pk):
 
     shared_cab_group = CabGroup.query.filter_by(id=pk).first()
+    user = User.query.filter_by(email=session["user"]).first()
+    
+    my_booking = Booking.query.filter_by(group=pk,user=user.id).first()
+    DROP = my_booking.destination
+
     if shared_cab_group == None:
         return "404 page not found \n group does not exist"
 
     bookings = shared_cab_group.bookings
 
+
     return render_template(
         "detail-group.html",
         user=session["user"],
         grp_bookings = bookings,
-        pk=pk
+        pk=pk,
+        MAPS_APIKEY = maps_apikey,
+        SOURCE = SOURCE,
+        DROP = DROP
     )
 
 
