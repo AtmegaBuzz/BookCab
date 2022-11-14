@@ -49,6 +49,11 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
 5. Bookings accepted <a id="Individual-Bookings"></a>
 	- Individual Bookings Info (info of people who will be sitting on same shared cab). 
    - ![image](https://user-images.githubusercontent.com/68425016/152769026-09d94746-f7d9-4d7b-9852-8ffad5331587.png)
+
+5. Your Route <a id="Individual-Bookings"></a>
+	- See your route in you bookings accepted page. 
+   - ![image](https://user-images.githubusercontent.com/68425016/201683649-67dd6a5c-d217-4a90-983c-fd265760774a.png)
+
   
 6. Chat Functionality <a id="Chats"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/201581222-b6841c98-1001-47d7-bfbe-d82e33eca63b.png)
