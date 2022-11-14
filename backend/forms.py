@@ -23,7 +23,7 @@ class LoginForm(FlaskForm):
 
     email = EmailField("Email",validators=[DataRequired(),Email()])
     password = PasswordField("Password",validators=[DataRequired(),Length(8)])
-    submit = SubmitField("Register")
+    submit = SubmitField("Log In")
 
 
 class BookCabForm(FlaskForm):
