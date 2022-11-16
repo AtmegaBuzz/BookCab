@@ -19,11 +19,12 @@
 
 <a id="About-Project"></a>
 
-# OSMD Cab Infrastructure
+# About OSMD Book Cab
 
-- One Source, Multiple Destination Book Cab App, is a cab app Website that focuses on optimizing the approach of booking shared from a single source.
+- Book Cab is a web app that optimizes the rideshare booking approach. This app serves as a single source to help users find the shortest path for multiple destination, shared rides.
 
-- The Idea is to implment the shortest path Algorithm from one source to check if it is feaseable and study the performance of developed algorithm for practical use.
+- The goal of this project is to figure out the shortest feasible path from a given starting point using an algorithm. The performance of the developed algorithm will be studied for practical use.
+
 
 # How it Works
 - Works on Bellman-Ford algorithm to compute shortest and optimized  path by considering each location as a vertex of the graph.
@@ -34,24 +35,24 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
 
 ## Features and Interfaces
 
-1. Register Page <a id="Login"></a>
+1. Registration page <a id="Login"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768563-2832bac6-9097-4ddc-986d-0df97379b1cd.png)
 
-2. Booking Page <a id="Booking-Cab"></a>
+2. Booking page <a id="Booking-Cab"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768627-17fb7908-3da2-421c-ad3c-7298d8b4b55a.png)
 
-3. Your Bookings  <a id="Your-Bookings"></a>
+3. Your bookings  <a id="Your-Bookings"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768780-d900ff3b-6d50-40f2-9f63-57a98df07017.png)
 
 4. Bookings accepted <a id="Bookings-Accepted"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768864-d36cdfc0-e45b-4d48-8965-b66697a478c4.png)
 
 5. Bookings accepted <a id="Individual-Bookings"></a>
-	- Individual Bookings Info (info of people who will be sitting on same shared cab). 
+	- Booking info of individuals who will be sitting in the same shared cab. 
    - ![image](https://user-images.githubusercontent.com/68425016/152769026-09d94746-f7d9-4d7b-9852-8ffad5331587.png)
 
-5. Your Route <a id="Individual-Bookings"></a>
-	- See your route in you bookings accepted page. 
+5. Your route <a id="Individual-Bookings"></a>
+	- See your route on your bookings accepted page. 
    - ![image](https://user-images.githubusercontent.com/68425016/201683649-67dd6a5c-d217-4a90-983c-fd265760774a.png)
 
   
@@ -67,9 +68,9 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
 
 - #### Add google maps API.
 
- 	- From google maps platform (google console) create your billing account.
-	 - Generate Api key to access the services
- 	- add the api to .env file. 
+ 	- Create your billing account at [google maps platform](https://mapsplatform.google.com/) (google console).
+	 - Generate Api key to access the services.
+ 	- Add the api to .env file. 
 
 <a id="run"></a>
 
