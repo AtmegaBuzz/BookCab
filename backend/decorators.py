@@ -3,6 +3,10 @@ from functools import wraps
 from backend.models import User
 
 def is_authenticated(func):
+    '''
+        Decorator to check if user is authenticated before accessing the route
+        else redirect to login
+    '''
     @wraps(func)
     def wrapper(*args,**kwargs):
 

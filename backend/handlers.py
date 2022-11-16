@@ -1,3 +1,6 @@
+
+# Contains event handlers for flask socket io events
+
 from flask_socketio import join_room, leave_room, send
 from flask import session
 
@@ -9,6 +12,10 @@ except ImportError:
 @socketio.on('join')
 def on_join_room(data):
 
+    '''
+        on call user will be added to the room sent by the user 
+    '''
+
     username = data['username']
     room = data['room']
     join_room(room)
@@ -16,6 +23,10 @@ def on_join_room(data):
 
 @socketio.on('leave')
 def on_leave(data):
+
+    '''
+        on call user will be removed from the room 
+    '''
 
     username = data['username']
     room = data['room']
@@ -26,6 +37,9 @@ def on_leave(data):
 @socketio.on('message')
 def handel_message(json):
     
+    '''
+        messages from users will be broadcasted 
+    '''
     
     room = json["room"]
     message = json["message"]
