@@ -21,9 +21,10 @@
 
 # OSMD Cab Infrastructure
 
-- One Source, Multiple Destination Book Cab App, is a cab app Website that focuses on optimizing the approach of booking shared from a single source.
+- Book Cab is a web app that optimizes the rideshare booking approach. This app serves as a single source to help users find the shortest path for multiple destination, shared rides.
 
-- The Idea is to implment the shortest path Algorithm from one source to check if it is feaseable and study the performance of developed algorithm for practical use.
+- The goal of this project is to figure out the shortest feasible path from a given starting point using an algorithm. The performance of the developed algorithm will be studied for practical use.
+
 
 # How it Works
 - Works on Bellman-Ford algorithm to compute shortest and optimized  path by considering each location as a vertex of the graph.
