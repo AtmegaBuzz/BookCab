@@ -19,7 +19,7 @@
 
 <a id="About-Project"></a>
 
-# OSMD Cab Infrastructure
+# About OSMD Book Cab
 
 - Book Cab is a web app that optimizes the rideshare booking approach. This app serves as a single source to help users find the shortest path for multiple destination, shared rides.
 
