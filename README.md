@@ -34,24 +34,24 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
 
 ## Features and Interfaces
 
-1. Register Page <a id="Login"></a>
+1. Registration page <a id="Login"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768563-2832bac6-9097-4ddc-986d-0df97379b1cd.png)
 
-2. Booking Page <a id="Booking-Cab"></a>
+2. Booking page <a id="Booking-Cab"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768627-17fb7908-3da2-421c-ad3c-7298d8b4b55a.png)
 
-3. Your Bookings  <a id="Your-Bookings"></a>
+3. Your bookings  <a id="Your-Bookings"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768780-d900ff3b-6d50-40f2-9f63-57a98df07017.png)
 
 4. Bookings accepted <a id="Bookings-Accepted"></a>
    - ![image](https://user-images.githubusercontent.com/68425016/152768864-d36cdfc0-e45b-4d48-8965-b66697a478c4.png)
 
 5. Bookings accepted <a id="Individual-Bookings"></a>
-	- Individual Bookings Info (info of people who will be sitting on same shared cab). 
+	- Booking info of individuals who will be sitting in the same shared cab. 
    - ![image](https://user-images.githubusercontent.com/68425016/152769026-09d94746-f7d9-4d7b-9852-8ffad5331587.png)
 
-5. Your Route <a id="Individual-Bookings"></a>
-	- See your route in you bookings accepted page. 
+5. Your route <a id="Individual-Bookings"></a>
+	- See your route on your bookings accepted page. 
    - ![image](https://user-images.githubusercontent.com/68425016/201683649-67dd6a5c-d217-4a90-983c-fd265760774a.png)
 
   
