@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block  title %} Services {% endblock  %}
+
+
+{% block body %}
+
+
+    <div class="content">
+            <div class="ic"></div>
+            <div class="container_12">
+                <div class="grid_12">
+                    <h3>Services Overview</h3>
+                </div>
+
+
+
+                <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+                
+                <!-- Snippet -->
+                <section class="flex w-full flex-col justify-center antialiased bg-gray-100 text-gray-600  p-1 mb-8">
+                    <div class="h-full">
+                        <!-- Table -->
+                        <div class="w-full  mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+                            <header class="px-5 py-4 border-b border-gray-100">
+                                <h2 class="font-semibold text-gray-800"> Your Bookings</h2>
+                            </header>
+                            <div class="p-3">
+                                <div class="overflow-x-auto">
+                                    <table class="table-auto w-full">
+                                        <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                                                                            
+                                            <tr>
+                                                <th class="p-2 whitespace-nowrap">
+                                                    <div class="font-semibold text-left">Destination</div>
+                                                </th>
+                                                <th class="p-2 whitespace-nowrap">
+                                                    <div class="font-semibold text-left">Group</div>
+                                                </th>
+                                                <th class="p-2 whitespace-nowrap">
+                                                    <div class="font-semibold text-left">Fare</div>
+                                                </th>
+                                                <th class="p-2 whitespace-nowrap">
+                                                    <div class="font-semibold text-center">Status</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm divide-y divide-gray-100">
+                                            
+
+                                            {%if bookings%}
+
+                                                {%for booking in bookings%}
+                                                
+                                                        <tr>
+                                                            <td class="p-2 whitespace-nowrap">
+                                                                <div class="flex items-center">
+                                                                    <style>
+                                                                        .tire{
+                                                                            cursor: pointer;
+                                                                            font-weight: bolder;
+                                                                        }
+                                                                        .tire:hover{
+                                                                            color: green;
+                                                                            transition: 0ms;
+                                                                        }
+                                                                    </style>
+                                                                    {%if booking.status == 1%}
+                                                                        <a href="{{ url_for('views.detail_group',pk=booking.group) }}" class="tire font-medium text-gray-800">{{booking.destination}}</a>
+                                                                    {%else%}
+                                                                        <a class="tire font-medium text-gray-800">{{booking.destination}}</a>
+                                                                    {%endif%}
+                                                                </div>
+                                                            </td>
+                                                            <td class="p-2 whitespace-nowrap">
+                                                                {%if booking.status == 1%}
+                                                                    <div class="text-left" style="color: orange;">Accepted</div>
+                                                                    {%else%}
+                                                                    <div class="text-left" style="color: green;">searching groups</div>
+                                                                    {%endif%}
+                                                                    
+                                                                </td>
+                                                                <td class="p-2 whitespace-nowrap">
+                                                                    {%if booking.status == 1%}
+                                                                    <div class="text-left font-medium text-green-500">₹{{booking.cost}}</div>
+                                                                    {%else%}
+                                                                    <div class="text-left font-medium text-green-500" style="color: red;">0</div>
+                                                                    
+                                                                    {%endif%}														
+                                                                </td>
+                                                                <td class="p-2 whitespace-nowrap">
+                                                                    {%if booking.status == 1%}
+                                                                    <div class="text-lg text-center" style="color: green;">Cab Booked</div>
+                                                                    {%else%}
+                                                                    <div class="text-lg text-center" style="color: red;">ongoing</div>
+                                                                    {%endif%}
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        
+                                                        
+                                                        {%endfor%}
+
+                                            {%else%}
+                                                    <div>
+                                                        <p style="color: red;">No current bookings</p>
+                                                    </div>
+                                            {%endif%}
+                                            
+                                                                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- More components -->
+                <div x-show="open" class="fixed bottom-0 right-0 w-full md:bottom-8 md:right-12 md:w-auto z-60"
+                    x-data="{ open: true }">
+                    <div class="bg-gray-800 text-gray-50 text-sm p-3 md:rounded shadow-lg flex justify-between">
+                        <div>👉 <a class="hover:underline ml-1"
+                                href="https://cruip.com/?ref=codepen-cruip-customers-table" target="_blank">More
+                                components on Cruip.com</a></div>
+                        <button class="text-gray-500 hover:text-gray-400 ml-5" @click="open = false">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-4 h-4 flex-shrink-0 fill-current" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.72 3.293a1 1 0 00-1.415 0L8.012 6.586 4.72 3.293a1 1 0 00-1.414 1.414L6.598 8l-3.293 3.293a1 1 0 101.414 1.414l3.293-3.293 3.293 3.293a1 1 0 001.414-1.414L9.426 8l3.293-3.293a1 1 0 000-1.414z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+                <div class="grid_4">
+                    <div class="box">
+                        <div class="maxheight">
+                            <img src="{{ url_for('static', filename='images/page4_img4.jpg') }}" , alt="page4_img4">
+                            <div class="text1 color2">
+                                <div>Fastest route.</div>
+                            </div>
+                            Aim of this project is to provide passengers with the fastest paths. This is done through a
+                            dynamic programming based approach.
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid_4">
+                    <div class="box">
+                        <div class="maxheight">
+                            <img src="{{ url_for('static', filename='images/cost1.jpg') }}" , alt="cost1">
+                            <div class="text1 color2">
+                                <div> Minimum Cost</div>
+                            </div>
+                            Another aim of this project is to make rides cost effective for all the passengers. We have
+                            designed this website to demonstrate the same.
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid_4">
+                    <div class="box">
+                        <div class="maxheight">
+                            <img src="{{ url_for('static', filename='images/serv1.jpg') }}" , alt="serv1">
+                            <div class="text1 color2">
+                                <div>Communicate with others </div>
+                            </div>
+                            A communication platform is embedded within the project. A group chat thread will be created
+                            for all the persons within the same cab.
+                            <br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,19 +1,30 @@
 
 import os
 from flask import Flask
-from flask_login import LoginManager
-from globals import UPLOAD_FOLDER,DB_NAME,SECRET_KEY,db,ma
+from globals import (
+    UPLOAD_FOLDER,
+    DB_NAME,
+    SECRET_KEY,
+    db,
+    STATIC_URI,
+    TEMPLATES_URI
+)
 
-def create_app():
+def create_app(testing=False):
 
     app = Flask(__name__)
+
     app.config["SECRET_KEY"] = SECRET_KEY
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+    app.config["TESTING"] = testing
+    app.static_folder = STATIC_URI
+    app.template_folder = TEMPLATES_URI
+
     db.init_app(app)
 
-    from backend.auth import auth 
-    from backend.views import views
+    from backend.views.auth import auth 
+    from backend.views.views import views
 
     app.register_blueprint(views,url_prefix='/')
     app.register_blueprint(auth,url_prefix='/auth/')
@@ -21,23 +32,12 @@ def create_app():
 
     from backend.models import (
         User,
-        Book,
-        Chapter
+        Booking,
+        CabGroup,
+        Source
     )
 
     create_database(app)
-
-    login_manager = LoginManager()
-    login_manager.init_app(app)
-    login_manager.login_view = "login"
-
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
-
-
-    # serialize/deserialize library 
-    ma.init_app(app)    
 
     return app
 

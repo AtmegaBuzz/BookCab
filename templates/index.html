@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block body %}		
+	<div class="slider_wrapper ">
+		<div id="camera_wrap" class="">
+			<div data-src="{{ url_for('static', filename='images/DTU-Campus.jpg') }}" ></div>
+			<div data-src="{{ url_for('static', filename='images/dtu2.jpg') }}" ></div>
+			<div data-src="{{ url_for('static', filename='images/dtu3.png') }}" ></div>
+			
+		</div>
+	</div>
+	<div class="container_12">
+		<div class="grid_4">
+			<div class="banner">
+				<div class="maxheight">
+					<div class="banner_title">
+						<img src="{{ url_for('static', filename='images/icon1.png') }}", alt="icon1">
+						<div class="extra_wrapper">Fast &amp;
+							<div class="color1">Safe</div>
+						</div>
+					</div>
+					We provide cabs with fastest rate.
+					All the drivers are registered.
+				</div>
+			</div>
+		</div>
+		<div class="grid_4">
+			<div class="banner">
+				<div class="maxheight">
+					<div class="banner_title">
+						<img src="{{ url_for('static', filename='images/icon2.png') }}", alt="icon2">
+						<div class="extra_wrapper">Best
+							<div class="color1">Prices</div>
+						</div>
+					</div>
+					Our aim is to provide customers with the minimum possible cost.
+				</div>
+			</div>
+		</div>
+		<div class="grid_4">
+			<div class="banner">
+				<div class="maxheight">
+					<div class="banner_title">
+						<img src="{{ url_for('static', filename='images/icon5.jpg') }}", alt="icon5">
+						<div class="extra_wrapper"> Choose
+							<div class="color1">riders</div>
+						</div>
+					</div>
+					We provide you the names of fellow passengers and a platform for communication between all the riders.
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+<!--==============================Content=================================-->
+	<div class="content"><div class="ic"></div>
+		<div class="container_12">
+			<div class="grid_5">
+				<h3>Book a cab</h3>
+				<form id="bookingForm" method = "POST">
+					{{ form.hidden_tag() }}
+					<div class="tmInput mr0">
+						{{ form.destination.label }}
+						{{ form.destination(id="destination-autocomplete") }}
+						<script>
+							function initMap() {
+								new google.maps.places.Autocomplete(
+									document.getElementById('destination-autocomplete')
+								)
+							}
+						</script>
+					</div>
+
+					<div class="clear"></div>
+					<strong>{{ form.time.label }}</strong>
+					<div class="tmInput">
+						{{ form.time() }}
+					</div>
+					<div class="clear"></div>
+					<strong>Date</strong>
+					<label class="tmDatepicker">
+						{{ form.date.label }}
+						{{ form.date() }}
+					</label>
+					<div class="clear"></div>
+					<!-- <a href="/addRequest" class="btn" data-type="submit">Submit</a> -->
+					<button type="submit" class="btn" style="border: none;">Book Cab</button>
+
+					{% for message in get_flashed_messages() %}
+						<p style="color: green;">{{message}}</p>
+					{% endfor %}
+
+				</form>
+			</div>
+			<div class="grid_6 prefix_1">
+				<div class="type"><img src="{{ url_for('static', filename='images/page1_img1.jpg') }}" alt=""><span class="type_caption">Book Cab</span></div>
+				<div class="type"><img src="{{ url_for('static', filename='images/dtutoramaecl.png') }}" alt=""><span class="type_caption">Live Location</span></div>
+				<div class="type"><img src="{{ url_for('static', filename='images/comm.jpg') }}" alt=""><span class="type_caption">Share stories</span></div>
+			</div>  
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block jsend %} 
+	<script src="https://maps.googleapis.com/maps/api/js?key={{google_maps_apikey}}&libraries=places&callback=initMap"></script>
+{% endblock %}

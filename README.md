@@ -1,4 +1,3 @@
-
 <p><img src="https://raw.githubusercontent.com/AtmegaBuzz/osmd/main/screenshots/logo.jpeg" alt="logo" width="20%" /></p>
 
 # OSMD Book Cab (One Source Multiple Destination)
@@ -18,56 +17,47 @@
   - [How to Add Redis Host](#redis-host)
   - [Setup And Run the Application](#run)
 
-
-
-
 <a id="About-Project"></a>
 
-# OSMD Cab Infrastructure
+# About OSMD Book Cab
 
-One Source, Multiple Destination Book Cab App, is a cab app Website that focuses on optimizing the approach of booking shared from a single source.
+- Book Cab is a web app that optimizes the rideshare booking approach. This app serves as a single source to help users find the shortest path for multiple destination, shared rides.
 
-We target organizations such as large MNC offices, Schools, or prominent gathering places, which are handled by an organization that has many individuals and wants to implement their own cab services.
+- The goal of this project is to figure out the shortest feasible path from a given starting point using an algorithm. The performance of the developed algorithm will be studied for practical use.
 
-This Idea focuses on providing the common Open-Source Infrastructure to the Organizations to implement their own software in delivering the cab services. 
-
-<a id="Working"></a>
 
 # How it Works
-```This Algorithm for this app is created by NSIT Last year student colaborated with Swapnil Shinde for Implementation. Last year project NSIT```
-1.It Is based on Bellman Ford algorith for shortest path | One source Multiple destination.
-2.This app takes the Const Starting point which will be same for all users , it can be a organisation or a school.
-3.then it optimises the path for one source to multiple destination
+- Works on Bellman-Ford algorithm to compute shortest and optimized  path by considering each location as a vertex of the graph.
+- The booking is then paired with max 4 people based on the route and low cost.
 
-<a id="Login"></a>
+### What is Bellman-Ford Algorithm 
+The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.
 
-# Login
-![DeepinScreenshot_select-area_20220207153128](https://user-images.githubusercontent.com/68425016/152768563-2832bac6-9097-4ddc-986d-0df97379b1cd.png)
+## Features and Interfaces
 
-<a id="Booking-Cab"></a>
+1. Registration page <a id="Login"></a>
+   - ![image](https://user-images.githubusercontent.com/68425016/152768563-2832bac6-9097-4ddc-986d-0df97379b1cd.png)
 
-# Booking Cab
-![DeepinScreenshot_select-area_20220207153250](https://user-images.githubusercontent.com/68425016/152768627-17fb7908-3da2-421c-ad3c-7298d8b4b55a.png)
+2. Booking page <a id="Booking-Cab"></a>
+   - ![image](https://user-images.githubusercontent.com/68425016/152768627-17fb7908-3da2-421c-ad3c-7298d8b4b55a.png)
 
-<a id="Your-Bookings"></a>
+3. Your bookings  <a id="Your-Bookings"></a>
+   - ![image](https://user-images.githubusercontent.com/68425016/152768780-d900ff3b-6d50-40f2-9f63-57a98df07017.png)
 
-# Your Bookings 
-![DeepinScreenshot_select-area_20220207153341](https://user-images.githubusercontent.com/68425016/152768780-d900ff3b-6d50-40f2-9f63-57a98df07017.png)
+4. Bookings accepted <a id="Bookings-Accepted"></a>
+   - ![image](https://user-images.githubusercontent.com/68425016/152768864-d36cdfc0-e45b-4d48-8965-b66697a478c4.png)
 
-<a id="Bookings-Accepted"></a>
+5. Bookings accepted <a id="Individual-Bookings"></a>
+	- Booking info of individuals who will be sitting in the same shared cab. 
+   - ![image](https://user-images.githubusercontent.com/68425016/152769026-09d94746-f7d9-4d7b-9852-8ffad5331587.png)
 
-# Bookings accepted 
-![DeepinScreenshot_select-area_20220207153528](https://user-images.githubusercontent.com/68425016/152768864-d36cdfc0-e45b-4d48-8965-b66697a478c4.png)
+5. Your route <a id="Individual-Bookings"></a>
+	- See your route on your bookings accepted page. 
+   - ![image](https://user-images.githubusercontent.com/68425016/201683649-67dd6a5c-d217-4a90-983c-fd265760774a.png)
 
-<a id="Individual-Bookings"></a>
-
-# Individual Bookings Info (info of people who will be sitting on same shared cab).
-![DeepinScreenshot_select-area_20220207153552](https://user-images.githubusercontent.com/68425016/152769026-09d94746-f7d9-4d7b-9852-8ffad5331587.png)
-
-<a id="Chats"></a>
-
-# Chat Functionality.
-![DeepinScreenshot_select-area_20220207153749](https://user-images.githubusercontent.com/68425016/152769124-3713e000-bbe8-46b9-a6a3-2d3c3017045d.png)
+  
+6. Chat Functionality <a id="Chats"></a>
+   - ![image](https://user-images.githubusercontent.com/68425016/201581222-b6841c98-1001-47d7-bfbe-d82e33eca63b.png)
 
 
 <a id="Getting-Started"></a>
@@ -76,22 +66,23 @@ This Idea focuses on providing the common Open-Source Infrastructure to the Orga
 
 <a id="google-api"></a>
 
-#### Add google maps API.
+- #### Add google maps API.
 
- - go to google developer console and enable and generate your own Google Maps Api
- - add the api to .env file. 
-
-<a id="redis-host"></a>
-
-#### Add Redis Host URI. 
- - go to redis lab and setup your own redis database 
- - add the redis host uri to .env 
+ 	- Create your billing account at [google maps platform](https://mapsplatform.google.com/) (google console).
+	 - Generate Api key to access the services.
+ 	- Add the api to .env file. 
 
 <a id="run"></a>
 
-#### Setup and Run the Application
- - ```pip install requirements.txt``` 
- - ```python manage.py makemigrations```
- - ```python manage.py migrate```
- - ```python manage.py runserver```
+- #### Setup using docker
+	- ````docker-compose build````
+	- ````docker-compose up````
 
+
+- #### Setup
+	 - ```pip install -r requirements.txt``` 
+	 - ```python server.py```
+
+- #### Run Tests using pytest
+	- ```pip install pytest```
+	- ```python -m pytest```

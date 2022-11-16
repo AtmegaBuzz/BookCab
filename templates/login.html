@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%block title%} Login {% endblock %}
+
+{% block body %}
+
+	<div class="content"><div class="ic"></div>
+			<div class="container_12">
+				<div class="grid_5">
+					<h3>Login</h3>
+					<form id="bookingForm"  method = "POST">
+						{{ form.hidden_tag() }}
+						<div>
+							<div class="tmInput">
+								{{ form.email.label }}
+								{{ form.email() }}
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div>
+							<div class="tmInput mr0">
+								{{ form.password.label }}
+								{{ form.password() }}
+							</div>
+						</div>
+						<div class="clear"></div>
+							{{ form.submit() }}
+						<div>
+							{% for message in get_flashed_messages() %}
+								<p style="color: red;">{{message}}</p>
+							{% endfor %}
+						</div> 
+					</form>
+				</div>
+				<div class="grid_6 prefix_1">
+					<div class="type"><img src="{{ url_for('static', filename='images/page1_img1.jpg') }}" alt=""><span class="type_caption">Book Cab</span></div>
+					<div class="type"><img src="{{ url_for('static', filename='images/loc.jpg') }}" alt=""><span class="type_caption">Live Location</span></div>
+					<div class="type"><img src="{{ url_for('static', filename='images/comm.jpg') }}" alt=""><span class="type_caption">Share stories</span></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
