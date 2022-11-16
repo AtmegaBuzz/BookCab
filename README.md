@@ -68,9 +68,9 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
 
 - #### Add google maps API.
 
- 	- From google maps platform (google console) create your billing account.
-	 - Generate Api key to access the services
- 	- add the api to .env file. 
+ 	- Create your billing account at [google maps platform](https://mapsplatform.google.com/) (google console).
+	 - Generate Api key to access the services.
+ 	- Add the api to .env file. 
 
 <a id="run"></a>
 
