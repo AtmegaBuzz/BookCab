@@ -21,11 +21,4 @@ jobs:
           run: |
             python -m pip install --upgrade pip
             pip install -r requirements.txt
-            python -m pytest 
-      autoclose:
-        steps:
-          - name: Issues Auto-close
-          - uses: roots/issue-closer@v1.1
-            with:
-              issue-close-message: "@${issue.user.login} this issue was automatically closed because it did not follow the issue template"
-              issue-pattern: ".*guidelines for Contributing.*"
+            python -m pytest
