@@ -6,9 +6,11 @@ from globals import (
     DB_NAME,
     SECRET_KEY,
     db,
+    migrate,
     STATIC_URI,
     TEMPLATES_URI
 )
+
 
 def create_app(testing=False):
 
@@ -21,7 +23,9 @@ def create_app(testing=False):
     app.static_folder = STATIC_URI
     app.template_folder = TEMPLATES_URI
 
+    migrate.init_app(app,db)
     db.init_app(app)
+
 
     from backend.views.auth import auth 
     from backend.views.views import views

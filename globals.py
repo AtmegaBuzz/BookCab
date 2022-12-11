@@ -2,6 +2,7 @@ import googlemaps
 import os
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+from flask_migrate import Migrate
 
 load_dotenv()
 
@@ -28,3 +29,4 @@ if maps_apikey == None:
 gmaps = googlemaps.Client(key=maps_apikey)
 
 db = SQLAlchemy()
+migrate = Migrate()
