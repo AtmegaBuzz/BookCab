@@ -45,7 +45,11 @@ The Bellman–Ford algorithm is an algorithm that computes shortest paths from a
    - ![image](https://user-images.githubusercontent.com/68425016/152768780-d900ff3b-6d50-40f2-9f63-57a98df07017.png)
 
 4. Bookings accepted <a id="Bookings-Accepted"></a>
-   - ![image](https://user-images.githubusercontent.com/68425016/152768864-d36cdfc0-e45b-4d48-8965-b66697a478c4.png)
+	- Booking accepted but payment pending 
+   - ![image](https://user-images.githubusercontent.com/68425016/207077739-6405d320-1edf-45d6-b92d-3cae063f4176.png)
+	- paying using ethereum (SepoliaETH)
+   - ![image](https://user-images.githubusercontent.com/68425016/207078028-ed56e3ee-0c54-414d-9211-11d2e2fc7db5.png)
+
 
 5. Bookings accepted <a id="Individual-Bookings"></a>
 	- Booking info of individuals who will be sitting in the same shared cab. 
