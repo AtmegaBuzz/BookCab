@@ -1,3 +1,4 @@
+import uuid
 import random
 from flask import Blueprint, render_template, session, request, flash, redirect, url_for 
 from backend.decorators import is_authenticated
@@ -26,7 +27,13 @@ def home():
 
                 # create bookings if there are more than 4 ongoing request in queue
                 user = User.query.filter_by(email=session["user"]).first()
-                curr_booking = Booking(destination=destination,user=user.id,status=0)
+                booking_hash = str(uuid.uuid1())
+                curr_booking = Booking(
+                        destination=destination,
+                        user=user.id,
+                        status=0,
+                        booking_hash=booking_hash
+                    )
                 db.session.add(curr_booking)
                 db.session.commit()
 

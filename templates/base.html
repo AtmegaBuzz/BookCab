@@ -19,6 +19,8 @@
 		<link rel="shortcut icon" href="images/favicon.ico" />
 
 		{% block js %} {% endblock %}
+		{% block css %} {% endblock %}
+
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-migrate-1.2.1.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
@@ -31,6 +33,8 @@
 		<script type="text/javascript" src="{{ url_for('static', filename='js/camera.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.mobile.customized.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='booking/js/booking.js') }}"></script>
+		
+
 		<script type="text/javascript">
 			$(document).ready(function(){
 				jQuery('#camera_wrap').camera({

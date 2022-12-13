@@ -2,9 +2,11 @@
 
 {% block  title %} Services {% endblock  %}
 
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+{% endblock %}
 
 {% block body %}
-
 
     <div class="content">
             <div class="ic"></div>
@@ -65,7 +67,7 @@
                                                                             transition: 0ms;
                                                                         }
                                                                     </style>
-                                                                    {%if booking.status == 1%}
+                                                                    {%if booking.status == 1 or booking.status == 2%}
                                                                         <a href="{{ url_for('views.detail_group',pk=booking.group) }}" class="tire font-medium text-gray-800">{{booking.destination}}</a>
                                                                     {%else%}
                                                                         <a class="tire font-medium text-gray-800">{{booking.destination}}</a>
@@ -89,10 +91,17 @@
                                                                     {%endif%}														
                                                                 </td>
                                                                 <td class="p-2 whitespace-nowrap">
-                                                                    {%if booking.status == 1%}
-                                                                    <div class="text-lg text-center" style="color: green;">Cab Booked</div>
-                                                                    {%else%}
-                                                                    <div class="text-lg text-center" style="color: red;">ongoing</div>
+                                                                    {%if booking.status == 0%}
+                                                                        <div class="text-lg text-center" style="color: red;">ongoing</div>
+                                                                    {%elif booking.status == 1%}
+                                                                        <button class="btn btn-primary .pay" id="{{booking.booking_hash}}" style="width: 100%;">Pay</button>
+                                                                        <script>
+                                                                                $("#{{booking.booking_hash}}").click(()=>{
+                                                                                    payBooking("{{booking.booking_hash}}",{{booking.cost}});
+                                                                                })
+                                                                        </script>
+                                                                    {%elif booking.status == 2%}
+                                                                        <div class="text-lg text-center" style="color: green;">Cab Booked</div>
                                                                     {%endif%}
                                                                     
                                                                 </td>
@@ -181,4 +190,5 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/Web3Payments.js') }}"></script>
 {% endblock %}
