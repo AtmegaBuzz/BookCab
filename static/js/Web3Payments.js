@@ -115,7 +115,12 @@ async function payBooking(bookingHash,bookingCost){
     }
 
     try{
-        await contract.methods.pay(bookingHash).send(transactionParam)
+        transaction = await contract.methods.pay(bookingHash).send(transactionParam);	
+		success_booking_url = "http://"+window.location.host+`/booking-payment/${bookingHash}`
+		console.log(success_booking_url)
+		await fetch(success_booking_url);	
+		location.reload(true);
+
     } catch{
         console.error("transaction failed");
     }

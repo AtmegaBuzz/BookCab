@@ -1,12 +1,17 @@
 import uuid
 import random
-from flask import Blueprint, render_template, session, request, flash, redirect, url_for 
+
+from flask import Blueprint, render_template, session, request, flash, redirect, url_for, make_response
+from flask_cors import CORS,cross_origin
+
 from backend.decorators import is_authenticated
 from backend.forms import BookCabForm
-from globals import maps_apikey
 from backend.models import Booking, User, CabGroup
 from backend.algorithm import main
+
+from globals import maps_apikey
 from globals import db, maps_apikey, SOURCE
+
 
 views = Blueprint("views",__name__)
 
@@ -149,3 +154,21 @@ def chat(pk):
         room=pk,
         user = session["user"]
     )
+
+
+@views.route("/booking-payment/<booking_hash>")
+@cross_origin()
+def booking_payment(booking_hash):
+
+    booking = Booking.query.filter_by(booking_hash=booking_hash).first()
+    if booking==None:
+        return make_response("FAILED",404)
+        
+    if booking.status!=2:
+
+        booking.status = 2
+        db.session.add(booking)
+        db.session.commit()
+
+
+    return make_response("SUCCESS",200)
