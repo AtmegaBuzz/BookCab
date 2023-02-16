@@ -70,7 +70,7 @@ urllib3==1.26.12
 varint==1.0.2
 web3==5.31.3
 websockets==9.1
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 WTForms==3.0.1
 yarl==1.8.2
 zope.event==4.5.0
