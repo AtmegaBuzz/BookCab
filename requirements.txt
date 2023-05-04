@@ -23,7 +23,7 @@ eth-typing==2.3.0
 eth-utils==1.9.5
 eventlet==0.33.1
 exceptiongroup==1.0.1
-Flask==2.2.2
+Flask==2.3.2
 Flask-Cors==3.0.10
 Flask-Mail==0.9.1
 Flask-Migrate==4.0.0
