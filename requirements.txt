@@ -66,7 +66,7 @@ six==1.16.0
 SQLAlchemy==1.4.43
 tomli==2.0.1
 toolz==0.12.0
-urllib3==1.26.12
+urllib3==1.26.18
 varint==1.0.2
 web3==5.31.3
 websockets==9.1
