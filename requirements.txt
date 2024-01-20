@@ -52,7 +52,7 @@ packaging==21.3
 parsimonious==0.8.1
 pluggy==1.0.0
 protobuf==3.19.5
-pycryptodome==3.16.0
+pycryptodome==3.19.1
 PyJWT==2.6.0
 pyparsing==3.0.9
 pyrsistent==0.19.2
